@@ -8,12 +8,12 @@ public class PurchaseOperation implements OperationHandler {
     public void process(FruitTransaction transaction) {
         String fruit = transaction.getFruit();
         int quantity = transaction.getQuantity();
-        int current = Storage.fruitStorage.getOrDefault(fruit, 0);
+        int current = Storage.get(fruit);
         if (quantity > current) {
             throw new RuntimeException("Not enough " + fruit + " in storage! Available: "
                     + current + ", requested: " + quantity);
         }
         int newCurrent = current - quantity;
-        Storage.fruitStorage.put(fruit, newCurrent);
+        Storage.put(fruit, newCurrent);
     }
 }
