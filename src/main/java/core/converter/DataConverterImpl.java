@@ -7,11 +7,11 @@ import java.util.List;
 public class DataConverterImpl implements DataConverter {
     @Override
     public List<FruitTransaction> convertToTransaction(List<String> lines) {
+        if (lines == null || lines.isEmpty()) {
+            throw new RuntimeException("Input file is empty");
+        }
         List<FruitTransaction> transactions = new ArrayList<>();
         for (int i = 1; i < lines.size(); i++) {
-            if (lines == null || lines.isEmpty()) {
-                throw new RuntimeException("Input file is empty");
-            }
             if (lines.get(i).isBlank()) {
                 continue;
             }

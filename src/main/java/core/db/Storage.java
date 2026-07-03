@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Storage {
-    public static final Map<String, Integer> fruitStorage = new HashMap<>();
+    private static final Map<String, Integer> fruitStorage = new HashMap<>();
 
     public static int get(String fruit) {
         return fruitStorage.getOrDefault(fruit, 0);
@@ -15,6 +15,6 @@ public class Storage {
     }
 
     public static Map<String, Integer> getAll() {
-        return fruitStorage;
+        return new HashMap<>(fruitStorage);
     }
 }
